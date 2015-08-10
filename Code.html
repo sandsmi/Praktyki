@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Feed</title>
+  <script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<div id="userId"></div>
+<div id="id"></div>
+<div id="title"></div>
+<div id="post"></div>
+
+<script>
+  function() {
+    var root = 'http://jsonplaceholder.typicode.com';
+    $.ajax({
+      url: root + '/posts/',
+      method: 'GET'
+    }).then(function(data) {
+      var str = JSON.stringify(data, null, '\t');
+      document.write(str);
+      // $("post").append(str)
+    });
+  });
+</script>
+
+</body>
+</html>
