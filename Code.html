@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Feed</title>
-  <script src="jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
 <body>
 
@@ -13,17 +13,25 @@
 <div id="post"></div>
 
 <script>
-  function() {
+  (function() {
     var root = 'http://jsonplaceholder.typicode.com';
     $.ajax({
-      url: root + '/posts/',
+      url: root + '/posts/1',
       method: 'GET'
     }).then(function(data) {
       var str = JSON.stringify(data, null, '\t');
-      document.write(str);
-      // $("post").append(str)
+      obj = JSON.parse(str);
+        document.getElementById("userId").innerHTML =
+        obj.userId;
+        document.getElementById("id").innerHTML =
+        obj.id;
+        document.getElementById("title").innerHTML =
+        obj.title;
+        document.getElementById("post").innerHTML =
+        obj.body;
     });
-  });
+  })();
+
 </script>
 
 </body>
