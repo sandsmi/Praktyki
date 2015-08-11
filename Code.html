@@ -12,27 +12,7 @@
 <div id="title"></div>
 <div id="post"></div>
 
-<script>
-  (function() {
-    var root = 'http://jsonplaceholder.typicode.com';
-    $.ajax({
-      url: root + '/posts/1',
-      method: 'GET'
-    }).then(function(data) {
-      var str = JSON.stringify(data, null, '\t');
-      obj = JSON.parse(str);
-        document.getElementById("userId").innerHTML =
-        obj.userId;
-        document.getElementById("id").innerHTML =
-        obj.id;
-        document.getElementById("title").innerHTML =
-        obj.title;
-        document.getElementById("post").innerHTML =
-        obj.body;
-    });
-  })();
-
-</script>
+<script src="LoadJson.js"></script>
 
 </body>
 </html>
