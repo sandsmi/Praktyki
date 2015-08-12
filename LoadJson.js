@@ -23,8 +23,7 @@ $(window).scroll(function() {
     });
 
 // Loads five more posts if the scrollbar reaches the bottom of the page
-function loadMore()
-  {
+function loadMore() {
     postLimit += 5;
     $('#container > .post:lt('+(postLimit)+')').show();
     if ($('#container > .post').length <= postLimit) {
