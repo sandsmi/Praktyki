@@ -7,7 +7,6 @@ var loadData = function(page) {
         method: "GET",
         dataType: 'json',
         url: 'http://jsonplaceholder.typicode.com/posts/',
-        data: {},
         success: (function (data) {
             for (i = minPostLimit; i <= maxPostLimit; i++) {
                 $('#container').append
