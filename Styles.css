@@ -13,12 +13,12 @@ body {
     margin-bottom: 10px;
 }
 
-#container:nth-child(odd) .post {
-    background-color: red;
+.post:nth-child(odd){
+    background-color: #FFFFFF;
 }
 
-#container:nth-child(even) .post {
-    background-color: #FFFFFF;
+.post:nth-child(even) {
+    background-color: #F1F1F1;
 }
 
 .post {
@@ -30,8 +30,6 @@ body {
     padding: 15px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
     font-family: "Arial", sans-serif;
 }
 
