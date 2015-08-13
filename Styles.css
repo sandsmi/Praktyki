@@ -1,0 +1,54 @@
+body {
+    background-color: #283D5E;
+}
+
+#container {
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    width: 600px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#container:nth-child(odd) .post {
+    background-color: red;
+}
+
+#container:nth-child(even) .post {
+    background-color: #FFFFFF;
+}
+
+.post {
+    border-bottom-style: solid;
+    border-color: #DBDBDB;
+    border-width: thin;
+    width: 560px;
+    position: relative;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Arial", sans-serif;
+}
+
+.text {
+    text-align: justify;
+    font-size: 14px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.id {
+    float: right;
+    font-size: 11px;
+}
+
+.img {
+    position: fixed;
+}
