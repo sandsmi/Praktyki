@@ -4,7 +4,7 @@ var page = 1;
 var LoadData = function(page) {
     var maxPostLimit = page * 20;
     var minPostLimit = maxPostLimit - 19;
-    if(page = 1) {
+    if(page == 1) {
         minPostLimit = 0;
     }
     $.ajax({
@@ -13,12 +13,12 @@ var LoadData = function(page) {
         url: 'http://jsonplaceholder.typicode.com/posts/',
         success: (function (data) {
             for (i = minPostLimit; i <= maxPostLimit; i++) {
-                $('#container').append
-                ('<div class="post"><div class="userId">'
+                $('<div class="post"><div class="icon"></div><div class="userId">'
                 +data[i].userId+'</div><div class="id">'
                 + "#" +data[i].id+'</div><div class="title">'
                 +data[i].title+'</div><div class="text">'
-                +data[i].body+'</div> </div>');
+                +data[i].body+'</div> </div>').hide()
+                .appendTo('#container').fadeIn("slow");
             }
         })
     });
@@ -34,33 +34,3 @@ $(window).scroll(function() {
           LoadData(page);
       }
 });
-
-// DIFFERENT APPROACH (UNFINISHED!!)
-
-/*
-var page = 1;
-
-var LoadData = function(page) {
-  var maxPostLimit = page * 20;
-  var minPostLimit = maxPostLimit - 1;
-  $.ajax({
-      method: "GET",
-      dataType: 'json',
-      url: 'http://jsonplaceholder.typicode.com/posts/',
-      success: (function (data) {
-          for (i = minPostLimit; i <= maxPostLimit; i++) {
-
-          }
-      })
-  });
-}
-
-var DisplayData = function() {
-    $('#container').append
-    ('<div class="post"><div class="userId">'
-    +data[i].userId+'</div><div class="id">'
-    +data[i].id+'</div><div class="title">'
-    +data[i].title+'</div><div class="text">'
-    +data[i].body+'</div> </div>');
-}
-*/
