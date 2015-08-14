@@ -34,8 +34,8 @@ var DataService = function() {
 
 };
 
-var DisplayData = function() {
-    console.log("Created DisplayData!");
+var DisplayService = function() {
+    console.log("Created DisplayService!");
 
     this.appendData = function() {
         var minPostLimit = (page * 20) - 19;
@@ -55,7 +55,7 @@ var DisplayData = function() {
 };
 
 var p = new DataService();
-var d = new DisplayData();
+var d = new DisplayService();
 
 // Loads data the first time
 p.getJsonFromSite(page, d.appendData);
