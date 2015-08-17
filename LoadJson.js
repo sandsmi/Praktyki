@@ -3,8 +3,7 @@ var posts = [];
 
 // loads placeholder data from site
 
-var DataService = function() {
-    console.log("Created LoadData!");
+var DataModule = (function () {
 
     var handleData = function(page, data) {
         var maxPostLimit = page * 20;
@@ -18,26 +17,29 @@ var DataService = function() {
         console.log("It works!");
     };
 
-    this.getJsonFromSite = function(page, callback) {
+    var getJsonFromSite = function(page, callback) {
         console.log("Loaded data from site")
         $.ajax({
             method: "GET",
             dataType: 'json',
             url: 'http://jsonplaceholder.typicode.com/posts/',
             success: function(data) {
-              handleData(page, data);
-              if(callback)
-                callback(data);
+                handleData(page, data);
+                    if(callback)
+                        callback(data);
             }
         })
     };
 
-};
+    return {
+        getJsonFromSite: getJsonFromSite
+    };
 
-var DisplayService = function() {
-    console.log("Created DisplayService!");
+}());
 
-    this.appendData = function() {
+var DisplayModule = (function() {
+
+    var appendData = function() {
         var minPostLimit = (page * 20) - 19;
         if(page == 1) {
             minPostLimit = 0;
@@ -51,19 +53,20 @@ var DisplayService = function() {
             .appendTo('#container').fadeIn("slow");
         }
         console.log("Append");
+    }
+
+    return {
+        appendData: appendData
     };
-};
 
-var p = new DataService();
-var d = new DisplayService();
+}());
 
-// Loads data the first time
-p.getJsonFromSite(page, d.appendData);
+DataModule.getJsonFromSite(page, DisplayModule.appendData);
 
 // Detects scrollbar position and loads data at the bottom of the page
 $(window).scroll(function() {
       if ($(window).scrollTop() == $(document).height() - $(window).height()) {
           page++;
-          p.getJsonFromSite(page, d.appendData);
+          DataModule.getJsonFromSite(page, DisplayModule.appendData);
       }
 });
