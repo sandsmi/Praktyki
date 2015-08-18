@@ -2,75 +2,6 @@
 <head>
 <title>Test Suite</title>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script>
-    (function() {
-        var queue = [], paused = false, results;
-        this.test = function(name, fn) {
-            queue.push(function() {
-            results = document.getElementById("results");
-            results = assert(true, name).appendChild(
-            document.createElement("ul"));
-            fn();
-            });
-            runTest();
-        };
-        this.pause = function() {
-            paused = true;
-        };
-        this.resume = function() {
-            paused = false;
-            setTimeout(runTest, 1);
-        };
-        function runTest() {
-            if (!paused && queue.length) {
-                queue.shift()();
-                if (!paused) {
-                    resume();
-                }
-            }
-        }
-        this.assert = function assert(value, desc) {
-            var li = document.createElement("li");
-            li.className = value ? "pass" : "fail";
-            li.appendChild(document.createTextNode(desc));
-            results.appendChild(li);
-            if (!value) {
-                li.parentNode.parentNode.className = "fail";
-            }
-            return li;
-        };
-    })();
-
-    window.onload = function() {
-
-        test("Test #1", function() {
-            assert(posts.length==0, "At first posts.length is 0");
-        });
-        test("Async Test #2", function() {
-            pause();
-            setTimeout(function() {
-                assert(posts.length==1, "Then posts.length is 1 (false statement)");
-                resume();
-            }, 100);
-        });
-        test("Async Test #3", function() {
-            pause();
-            setTimeout(function() {
-                assert(posts.length==0, "After loading, posts.length is 0 (false statement)");
-                assert(posts.length==21, "After loading, posts.length is 21");
-                assert(posts[20], "20th element exists");
-                assert(posts[22], "22th element exists (false statement)");
-                resume();
-            }, 2000);
-        });
-        test("Test #4", function() {
-            assert(posts[1].userId=="1", "userId of the first post is 1");
-            assert(posts[18].userId=="2", "userId of the 18th post is 2");
-            assert(posts[4].title=="nesciunt quas odio",
-              "Title of the 5th post is nesciunt quas odio");
-        });
-    };
-</script>
 
 <style>
     #results li.pass {
@@ -80,11 +11,12 @@
         color: red;
     }
 </style>
-
 </head>
 
 <body>
     <script src="LoadJson.js"></script>
+    <script src="TestSuite.js"></script>
+    <script src="StartTesting.js"></script>
     <ul id="results"></ul>
 </body>
 
